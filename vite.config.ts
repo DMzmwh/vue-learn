@@ -24,7 +24,7 @@ export default defineConfig({
     minifyHtml(),
     injectHtml({
       data: {
-        title: 'Vite Vue Starter',
+        title: '优聚集 多用户导航系统2',
         injectScript: '',
       },
     }),
@@ -37,4 +37,16 @@ export default defineConfig({
       ],
     }),
   ],
+  server: {
+    proxy: {
+      // 字符串简写写法
+      //'/foo': 'http://localhost:4567',
+      // 选项写法
+      '/api': {
+        target: 'https://api2.ujuji.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 });

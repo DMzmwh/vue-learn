@@ -1,10 +1,16 @@
 <script lang="ts" setup="setup">
   import useCounter from '@/store/useCounter';
+  import requests from '@/api/requests';
   import { storeToRefs } from 'pinia';
   import AppIcon from '@/components/common/AppIcon.vue';
 
   const counter = useCounter();
   const refCounter = storeToRefs(counter);
+  requests(config:{
+    url:`/api/site_config/v1/ujuji`
+  }).then((res)=>{
+    console.log(res.data)
+  })
 </script>
 
 <template>
